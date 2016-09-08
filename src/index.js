@@ -10,38 +10,66 @@ import rp from 'request-promise';
 //  operationName: string,
 //};
 
-function generateQuery(query) {
-  return mapValues({
-    query,
-  }, (val, key) => {
-    return key === 'query' ? print(val) : val;
-  });
-}
+class RedEye {
+  constructor(params) {
+    this.origin = get(params, 'origin');
+  }
 
-function sendQuery(origin, query) {
-  var options = {
-    method: 'POST',
-    uri: origin,
-    body: query,
-    json: true // Automatically stringifies the body to JSON
-  };
-
-  rp(options)
-    .then(function (parsedBody) {
-      // POST succeeded...
-      console.log(get(parsedBody, 'data'));
-
-    })
-    .catch(function (err) {
-      // POST failed...
-      console.log(err);
+  generateQuery(query) {
+    return mapValues({
+      query,
+    }, (val, key) => {
+      return key === 'query' ? print(val) : val;
     });
+  }
+
+  sendQuery(query) {
+    const options = {
+      method: 'POST',
+      uri: this.origin,
+      body: query,
+      json: true // Automatically stringifies the body to JSON
+    };
+
+    return rp(options)
+      .then(function (parsedBody) {
+        // POST succeeded...
+        console.log(get(parsedBody, 'data'));
+      })
+      .catch(function (err) {
+        // POST failed...
+        console.log(err);
+      });
+  }
 }
 
-sendQuery('http://localhost:8000/graphql', generateQuery(gql`
-  { allCountries { name } }
-`));
 
-console.log(generateQuery(gql`
-  { allCountries { name } }
-`));
+/***
+ * TESTING
+ * @type {RedEye}
+ */
+const QueryManager = new RedEye({
+  origin: 'http://localhost:8000/graphql'
+});
+
+const allCountries = gql`
+  {
+    allCountries {
+      name
+    }
+  }
+`;
+
+const allCountriesQuery = QueryManager.generateQuery(allCountries);
+console.log(allCountriesQuery);
+QueryManager.sendQuery(allCountriesQuery);
+
+const testMutation = gql`
+    mutation Test {
+      test: testCountryMutation(yo: "123")
+    }
+`;
+const countryMutation = QueryManager.generateQuery(testMutation);
+console.log(countryMutation);
+QueryManager.sendQuery(countryMutation);
+
