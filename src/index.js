@@ -7,11 +7,13 @@ export default class RedEye {
   constructor(params) {
     this.origin = get(params, 'origin');
   }
+
   generateQuery(query, variables) {
-    return mapValues({
-      query,
-      variables,
-    }, (val, key) => {
+    const request = Object.assign({}, {query: gql`${query}`});
+    if (variables) {
+      request.variables = variables;
+    }
+    return mapValues(request, (val, key) => {
       return key === 'query' ? print(val) : val;
     });
   }

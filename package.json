@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "runQuery": "babel-node src/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha test/index.js",
     "lint": "eslint .",
     "fix": "eslint . --fix",
     "prepublish": "babel ./src --ignore test --out-dir ./dist"
@@ -23,7 +23,10 @@
     "babel-plugin-transform-react-jsx": "^6.8.0",
     "babel-preset-es2015": "^6.5.0",
     "babel-preset-stage-0": "^6.5.0",
-    "eslint": "^3.4.0"
+    "chai": "^3.5.0",
+    "eslint": "^3.4.0",
+    "mocha": "^3.0.2",
+    "sinon": "^1.17.5"
   },
   "eslintConfig": {
     "parser": "babel-eslint",
