@@ -1,11 +1,10 @@
 import { expect } from 'chai';
-import { get, first } from 'lodash';
-import { test } from 'sinon';
+import { get } from 'lodash';
 import RedEye from '../src';
 
 // use GraphQL Hub to use RedEye to query real data sources
 const QueryManager = new RedEye({
-  origin: 'https://www.graphqlhub.com/graphql'
+  origin: 'https://www.graphqlhub.com/graphql',
 });
 
 describe('RedEye - GraphQLHub', function () {
@@ -16,7 +15,7 @@ describe('RedEye - GraphQLHub', function () {
   `);
 
   it('should correctly return a response for generate query', function () {
-    expect(query).to.eql({ query: "{\n  graphQLHub\n}\n" });
+    expect(query).to.eql({ query: '{\n  graphQLHub\n}\n' });
   });
 
   it('should correctly return a response from the server when query is sent', function (done) {
@@ -44,7 +43,7 @@ describe('RedEye - GraphQLHub Reddit', function () {
   `);
 
   it('should correctly return a response for generate query', function () {
-    expect(query).to.eql({ query: "{\n  reddit {\n    user(username: \"kn0thing\") {\n      username\n      commentKarma\n      createdISO\n    }\n  }\n}\n" });
+    expect(query).to.eql({ query: '{\n  reddit {\n    user(username: "kn0thing") {\n      username\n      commentKarma\n      createdISO\n    }\n  }\n}\n' });
   });
 
   it('should correctly return a response from the server when query is sent', function (done) {
@@ -77,7 +76,7 @@ describe('RedEye - GraphQLHub Subreddit with variables', function () {
         }
       }
   `, {
-    name: "movies",
+    name: 'movies',
     limit: 2,
   });
 

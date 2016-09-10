@@ -50,6 +50,7 @@
   "license": "ISC",
   "dependencies": {
     "graphql-tag": "^0.1.13",
+    "lodash": "^4.15.0",
     "request-promise": "^4.1.1"
   }
 }

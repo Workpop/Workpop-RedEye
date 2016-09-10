@@ -23,7 +23,7 @@ export default class RedEye {
       method: 'POST',
       uri: this.origin,
       body: query,
-      json: true // Automatically stringifies the body to JSON
+      json: true, // Automatically stringifies the body to JSON
     };
 
     return rp(options);
