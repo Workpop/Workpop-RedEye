@@ -1,5 +1,5 @@
 {
-  "name": "workpop-redeye",
+  "name": "@workpop/redeye",
   "version": "0.0.1",
   "description": "GraphQL Util Library ",
   "main": "dist/index.js",
