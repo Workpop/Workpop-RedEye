@@ -1,13 +1,13 @@
-# RedEye
------------
+RedEye
+------
 A GraphQL query generator and transport. 
 
-### Install
+Install
 ------------
 
 `npm install @workpop/redeye`
 
-### Getting Started
+Getting Started
 ---------------------
 
 To hop on the RedEye you will need an origin. This will be the URL of your `graphql` endpoint.
@@ -27,7 +27,7 @@ That's it! Now you have a Query Manager. The Query Manager's job is two fold:
 1. Create queries for GraphQL Queries and Mutations
 2. Make the HTTP Post Request to the endpoint.
 
-### API
+API
 ----------
 
 #### `generateQuery(query: string, variables: Object): string`

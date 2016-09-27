@@ -6,6 +6,7 @@ import rp from 'request-promise';
 export default class RedEye {
   constructor(params) {
     this.origin = get(params, 'origin');
+    this.headers = get(params, 'headers');
   }
 
   generateQuery(query, variables) {
@@ -22,6 +23,7 @@ export default class RedEye {
     const options = {
       method: 'POST',
       uri: this.origin,
+      headers: this.headers,
       body: query,
       json: true, // Automatically stringifies the body to JSON
     };
