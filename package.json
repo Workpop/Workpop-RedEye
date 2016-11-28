@@ -8,7 +8,8 @@
     "test": "mocha test/index.js",
     "lint": "eslint .",
     "fix": "eslint . --fix",
-    "prepublish": "babel ./src --ignore test --out-dir ./dist"
+    "prepublish": "babel ./src --ignore test --out-dir ./dist",
+    "postpublish": "greenkeeper-postpublish"
   },
   "keywords": [
     "GraphQL"
@@ -25,6 +26,7 @@
     "babel-preset-stage-0": "^6.5.0",
     "chai": "^3.5.0",
     "eslint": "^3.4.0",
+    "greenkeeper-postpublish": "^1.0.1",
     "lodash": "^4.17.2",
     "mocha": "^3.0.2",
     "pre-commit": "^1.1.3",
