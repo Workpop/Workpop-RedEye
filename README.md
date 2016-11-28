@@ -1,14 +1,11 @@
-RedEye
-------
+# RedEye
 A GraphQL query generator and transport. 
 
-Install
-------------
+## Install
 
 `npm install @workpop/redeye`
 
-Getting Started
----------------------
+## Getting Started
 
 To hop on the RedEye you will need an origin. This will be the URL of your `graphql` endpoint.
 RedEye provides a constructor to configure this origin for Queries/Mutations to transport to.
@@ -27,10 +24,9 @@ That's it! Now you have a Query Manager. The Query Manager's job is two fold:
 1. Create queries for GraphQL Queries and Mutations
 2. Make the HTTP Post Request to the endpoint.
 
-API
-----------
+## API
 
-#### `generateQuery(query: string, variables: Object): string`
+#### `generateQuery(query: string, variables: Object): RedEyeQueryType`
 
 To generate a query, RedEye leverages the `graphql-tag` npm module to allow users to express their queries as
 template literal strings. The generation function then turns this query string into a GraphQL AST and passes it along
@@ -79,14 +75,18 @@ Let's make an example query to the Reddit API
   });
 ``` 
 
-#### `sendQuery(query: string): Promise`
+#### `send(): Promise<any>`
 
-Sends generate query to the RedEye origin as a `POST` request and returns a promise to resolve the result of the request.
+Sends generated query to the RedEye origin as a `POST` request and returns a promise to resolve the result of the request.
 
 ```js
     import { get } from 'lodash';
+    
+    const query = QueryManager.generateQuery(q, {
+        username: 'Workpop',
+    });
    
-    QueryManager.sendQuery(query).then((response) => {
+    query.send().then((response) => {
       const user = get(response, 'data.reddit.user');
       console.log(user); // Workpop
       return user;
@@ -95,6 +95,44 @@ Sends generate query to the RedEye origin as a `POST` request and returns a prom
     });
 ```
 
-### Coming Soon
-- [] Query Refetch
+#### `refetch(variables?: Object): Promise<any>`
+ 
+Generated queries can also refetch with the same variables or pass in new variables to the existing query. 
+
+```js
+    import { get } from 'lodash';
+    
+    const query = QueryManager.generateQuery(q, {
+        username: 'Workpop',
+    });
+   
+    query.refetch().then((response) => {
+      const user = get(response, 'data.reddit.user');
+      console.log(user); // Workpop
+      return user;
+    }).catch((e) => {
+      throw new Error(e.reason);
+    });
+```
+
+```js
+    import { get } from 'lodash';
+    
+    const query = QueryManager.generateQuery(q, {
+        username: 'Workpop',
+    });
+   
+    query.refetch({
+        name: 'FOO',
+        limit: 4
+    }).then((response) => {
+      const user = get(response, 'data.reddit.user');
+      console.log(user); // Workpop
+      return user;
+    }).catch((e) => {
+      throw new Error(e.reason);
+    });
+```
+
+### COMING SOON:
 - [] Results Cache
