@@ -1,6 +1,6 @@
 import gql from 'graphql-tag';
 import { print } from 'graphql-tag/printer';
-import { mapValues, get, partial } from 'lodash';
+import { mapValues, get } from 'lodash';
 import rp from 'request-promise';
 
 export default class RedEye {
@@ -42,6 +42,6 @@ export default class RedEye {
         const refetchedQuery = this._createQuery(query, refetchVariables);
         return this._sendQuery(refetchedQuery);
       },
-    }
+    };
   }
 }

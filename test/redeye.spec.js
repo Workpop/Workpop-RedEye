@@ -109,7 +109,7 @@ describe('RedEye - GraphQLHub Subreddit with variables', function () {
     this.timeout(20000);
     query.refetch({
       name: 'movies',
-      limit: 4
+      limit: 4,
     }).then((response) => {
       const data = get(response, 'data.reddit.subreddit.newListings');
       expect(data.length).to.eql(4);
