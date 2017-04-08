@@ -17,7 +17,7 @@
   "devDependencies": {
     "@workpop/eslint-config-workpop": "0.0.5",
     "babel-cli": "^6.6.5",
-    "babel-core": "6.23.1",
+    "babel-core": "6.24.1",
     "babel-eslint": "^7.1.0",
     "babel-loader": "6.3.2",
     "babel-plugin-syntax-flow": "^6.8.0",
