@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="1.1.0"></a>
+# [1.1.0](https://github.com/Workpop/Workpop-RedEye/compare/v1.0.0...v1.1.0) (2017-05-08)
+
+
+### Features
+
+* **enhancements:** enhance and upgrade some libs ([9cff307](https://github.com/Workpop/Workpop-RedEye/commit/9cff307))
+
+
+
 <a name="1.0.0"></a>
 # 1.0.0 (2016-11-28)
 
