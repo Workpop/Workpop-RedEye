@@ -1,6 +1,6 @@
 import gql from 'graphql-tag';
-import { print } from 'graphql-tag/printer';
-import { mapValues, get } from 'lodash';
+import { print } from 'graphql/language/printer';
+import { mapValues, get } from 'lodash'; //eslint-disable-line import/no-extraneous-dependencies
 import rp from 'request-promise';
 
 export default class RedEye {
