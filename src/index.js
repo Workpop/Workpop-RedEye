@@ -7,6 +7,7 @@ export default class RedEye {
   constructor(params) {
     this.origin = get(params, 'origin');
     this.headers = get(params, 'headers');
+    this.requestOptions = get(params, 'requestOptions', {});
   }
 
   _sendQuery(query) {
@@ -16,6 +17,7 @@ export default class RedEye {
       headers: this.headers,
       body: query,
       json: true, // Automatically stringifies the body to JSON
+      ...this.requestOptions,
     };
 
     return rp(options);
