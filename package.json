@@ -15,7 +15,7 @@
     "GraphQL"
   ],
   "devDependencies": {
-    "@workpop/eslint-config-workpop": "0.0.5",
+    "@workpop/eslint-config-workpop": "0.0.9",
     "babel-cli": "^6.6.5",
     "babel-core": "6.24.1",
     "babel-eslint": "^7.1.0",
